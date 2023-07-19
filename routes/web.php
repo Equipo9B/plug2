@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\PerfilController;
+use App\http\Controllers\HobbieController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,5 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/usuarios', [PerfilController::class, 'show']);
+
+Route::resource('/hobbies', HobbieController::class);
 
 //Route::get('usuario','PerfilController@index');
