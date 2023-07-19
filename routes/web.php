@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\PerfilController;
 use App\http\Controllers\HobbieController;
+use App\http\Controllers\UsuarioController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,8 +20,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/usuarios', [PerfilController::class, 'show']);
+//Route::get('/usuarios', [PerfilController::class, 'show']);
 
 Route::resource('/hobbies', HobbieController::class);
 
+Route::resource('usuarios', UsuarioController::class);
+
 //Route::get('usuario','PerfilController@index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
