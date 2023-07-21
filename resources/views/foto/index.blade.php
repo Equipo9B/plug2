@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Usuario
+    Foto
 @endsection
 
 @section('content')
@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Usuario') }}
+                                {{ __('Fotos') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('usuarios.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Nuevo') }}
+                                <a href="{{ route('fotos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Crear Nueva') }}
                                 </a>
                               </div>
                         </div>
@@ -36,34 +36,26 @@
                                     <tr>
                                         <th>No</th>
 
-										<th>Name</th>
-										<th>Correo</th>
-										<th>Contraseña</th>
-										<th>Fecha de Nacimiento</th>
-										<th>Genero</th>
-										<th>Busqueda</th>
-										<th>Interes(es)</th>
+										<th>Foto</th>
+										<th>Usuario Id</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($usuarios as $usuario)
+                                    @foreach ($fotos as $foto)
                                         <tr>
                                             <td>{{ ++$i }}</td>
+                                            <td>
+                                                <img src="{{ asset($foto->foto)}}" width="50" height="50" class="img img-responsive">
+                                            </td>
+											<td>{{ $foto->usuario_id }}</td>
 
-											<td>{{ $usuario->name }}</td>
-											<td>{{ $usuario->correo }}</td>
-											<td>{{ $usuario->contraseña }}</td>
-											<td>{{ $usuario->fecha_nac }}</td>
-											<td>{{ $usuario->genero }}</td>
-											<td>{{ $usuario->busqueda }}</td>
-											<td>{{ $usuario->interes }}</td>
 
                                             <td>
-                                                <form action="{{ route('usuarios.destroy',$usuario->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$usuario->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$usuario->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('fotos.destroy',$foto->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('fotos.show',$foto->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('fotos.edit',$foto->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
@@ -76,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $usuarios->links() !!}
+                {!! $fotos->links() !!}
             </div>
         </div>
     </div>

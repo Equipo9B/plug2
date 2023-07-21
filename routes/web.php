@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\http\Controllers\PerfilController;
 use App\http\Controllers\HobbieController;
 use App\http\Controllers\UsuarioController;
+use App\http\Controllers\FotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ Route::get('/', function () {
 Route::resource('/hobbies', HobbieController::class);
 
 Route::resource('usuarios', UsuarioController::class);
+
+Route::resource('fotos', FotoController::class);
 
 //Route::get('usuario','PerfilController@index');
 
