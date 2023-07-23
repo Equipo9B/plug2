@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Usuario extends Model
 {
-    
+
     static $rules = [
 		'name' => 'required',
 		'correo' => 'required',
@@ -40,7 +40,7 @@ class Usuario extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','correo','contraseña','fecha_nac','genero','busqueda','interes'];
+    protected $fillable = ['name','correo','contraseña','fecha_nac','genero','busqueda','interes','carrera'];
 
 
     /**
@@ -50,6 +50,6 @@ class Usuario extends Model
     {
         return $this->hasMany('App\Models\Foto', 'usuario_id', 'id');
     }
-    
+
 
 }

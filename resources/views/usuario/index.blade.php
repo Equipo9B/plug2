@@ -43,6 +43,8 @@
 										<th>Genero</th>
 										<th>Busqueda</th>
 										<th>Interes(es)</th>
+                                        <th>Carrera</th>
+
 
                                         <th></th>
                                     </tr>
@@ -59,6 +61,7 @@
 											<td>{{ $usuario->genero }}</td>
 											<td>{{ $usuario->busqueda }}</td>
 											<td>{{ $usuario->interes }}</td>
+                                            <td>{{ $usuario->carrera }}</td>
 
                                             <td>
                                                 <form action="{{ route('usuarios.destroy',$usuario->id) }}" method="POST">

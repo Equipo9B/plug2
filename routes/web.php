@@ -18,7 +18,7 @@ use App\http\Controllers\FotoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('usuario');
 });
 
 //Route::get('/usuarios', [PerfilController::class, 'show']);
@@ -34,3 +34,11 @@ Route::resource('fotos', FotoController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/ingreso', function(){
+    return view('ingreso');
+});
+
+Route::get('/registro', function(){
+    return view('registro');
+});
