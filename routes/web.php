@@ -36,12 +36,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/ingreso', [AuthManager::class, 'ingresoVista'])->name('ingresoVista');
+Route::get('/ingreso', [AuthManager::class, 'ingresoVista'])->name('ingresoVista')->middleware('AlreadyLoggedIn');
 Route::post('/ingreso', [AuthManager::class, 'ingresoPost'])->name('ingresoPost');
 
-Route::get('/registro', [AuthManager::class, 'registroVista'])->name('registroVista');
+Route::get('/registro', [AuthManager::class, 'registroVista'])->name('registroVista')->middleware('AlreadyLoggedIn');
 Route::post('/registro', [AuthManager::class, 'registroPost'])->name('registroPost');
 
-Route::get('/inicio', [AuthManager::class, 'inicio'])->name('inicio');
+Route::get('/inicio', [AuthManager::class, 'inicio'])->name('inicio')->middleware('isLoggedIn');
 
 Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');

@@ -37,12 +37,6 @@ class AuthManager extends Controller
         else{
             return back()->with('error','Correo no registrado');
         }
-
-        //$credentials = $request->only('correo','contraseña');
-        //if(Auth::attempt($credentials)){
-        //    return redirect()->intended(route('home'))->with("exito","Credenciales correctas");
-        //}
-        //return redirect()->intended(route('ingresoVista'))->with("error","Credenciales incorrectas");
     }
 
     function registroPost(Request $request){
