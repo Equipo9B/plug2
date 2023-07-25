@@ -5,6 +5,7 @@ use App\http\Controllers\PerfilController;
 use App\http\Controllers\HobbieController;
 use App\http\Controllers\UsuarioController;
 use App\http\Controllers\FotoController;
+use App\http\Controllers\AuthManager;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +36,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/ingreso', function(){
-    return view('ingreso');
-});
+Route::get('/ingreso', [AuthManager::class, 'ingresoVista'])->name('ingresoVista');
+Route::post('/ingreso', [AuthManager::class, 'ingresoPost'])->name('ingresoPost');
 
-Route::get('/registro', function(){
-    return view('registro');
-});
+Route::get('/registro', [AuthManager::class, 'registroVista'])->name('registroVista');
+Route::post('/registro', [AuthManager::class, 'registroPost'])->name('registroPost');
+
+Route::get('/inicio', [AuthManager::class, 'inicio'])->name('inicio');
+
+Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');

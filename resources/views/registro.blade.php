@@ -2,7 +2,27 @@
 
 @section('content')
 <h1>PAGINA DE REGISTRO</h1>
-<form class="ms-auto me-auto" style="width: 500px">
+<div class="container">
+    <div class="mt-5">
+        @if($errors->any())
+            <div class="col-12">
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">{{ $error }}</div>
+                @endforeach
+            </div>
+        @endif
+
+        @if(session()->has('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
+
+        @if(session()->has('exito'))
+            <div class="alert alert-success">{{ session('exito') }}</div>
+        @endif
+
+    </div>
+<form action="{{route('registroPost')}}" method="POST" class="ms-auto me-auto" style="width: 500px">
+    @csrf
     <div class="mb-3">
         <label for="name" class="form-label">Nombre:</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Ingresa tu nombre completo">
@@ -24,8 +44,8 @@
       </div>
 
       <div class="mb-3">
-        <label for="fecha_nac" class="form-label">Sexo:</label>
-        <select class="form-select" aria-label="Default select example">
+        <label for="genero" class="form-label">Sexo:</label>
+        <select class="form-select" id="genero" name="genero" aria-label="Default select example">
             <option selected>Selecciona una opción</option>
             <option value="Hombre">Hombre</option>
             <option value="Mujer">Mujer</option>
@@ -51,8 +71,8 @@
       </div>
 
       <div class="mb-3">
-        <label for="fecha_nac" class="form-label">Buscar:</label>
-        <select class="form-select" aria-label="Default select example">
+        <label for="busqueda" class="form-label">Buscar:</label>
+        <select class="form-select" id="busqueda" name="busqueda" aria-label="Default select example">
             <option selected>Selecciona una opción</option>
             <option value="Hombres">Hombres</option>
             <option value="Mujeres">Mujers</option>
@@ -61,8 +81,8 @@
       </div>
 
       <div class="mb-3">
-        <label for="fecha_nac" class="form-label">Carrera:</label>
-        <select class="form-select" aria-label="Default select example">
+        <label for="carrera" class="form-label">Carrera:</label>
+        <select class="form-select" id="carrera" name="carrera" aria-label="Default select example">
             <option selected>Selecciona una carrera</option>
             <option value="Contaduria">Contaduria</option>
             <option value="Tecnonlogías de la información">Tecnonlogías de la información</option>
@@ -76,6 +96,6 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-
+</div>
 
 @endsection

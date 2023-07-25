@@ -3,42 +3,66 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+/**
+ * Class Usuario
+ *
+ * @property $id
+ * @property $name
+ * @property $correo
+ * @property $contraseña
+ * @property $fecha_nac
+ * @property $genero
+ * @property $busqueda
+ * @property $interes
+ * @property $carrera
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property Foto[] $fotos
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
+
+class User extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table='usuarios';
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+    static $rules = [
+		'name' => 'required',
+		'correo' => 'required',
+		'contraseña' => 'required',
+		'fecha_nac' => 'required',
+		'busqueda' => 'required',
+        'carrera' => 'required',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $perPage = 20;
 
     /**
-     * The attributes that should be cast.
+     * Attributes that should be mass-assignable.
      *
-     * @var array<string, string>
+     * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $fillable = ['name','correo','contraseña','fecha_nac','genero','busqueda','interes','carrera'];
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function fotos()
+    {
+        return $this->hasMany('App\Models\Foto', 'usuario_id', 'id');
+    }
 }

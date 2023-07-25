@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $genero
  * @property $busqueda
  * @property $interes
+ * @property $carrera
  * @property $created_at
  * @property $updated_at
  *
@@ -31,6 +32,7 @@ class Usuario extends Model
 		'contraseña' => 'required',
 		'fecha_nac' => 'required',
 		'busqueda' => 'required',
+        'carrera' => 'required',
     ];
 
     protected $perPage = 20;
