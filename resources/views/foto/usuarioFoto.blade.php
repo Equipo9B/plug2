@@ -34,8 +34,7 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-
+                                        <th>Id</th>
 										<th>Foto</th>
 										<th>Usuario Id</th>
 
@@ -44,17 +43,19 @@
                                 </thead>
                                 <tbody>
                                     @php
-                                        $sqlCon="variable2";
-                                        echo $sqlCon;
                                     @endphp
                                     @foreach ($fotos as $foto)
+                                    @php
+                                        $loginId = Session::get('loginId');
+                                        $idFoto = $foto->usuario_id;
+                                    @endphp
+                                    @if($idFoto==$loginId)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $foto->id }}</td>
                                             <td>
                                                 <img src="{{ asset($foto->foto)}}" width="50" height="50" class="img img-responsive">
                                             </td>
 											<td>{{ $foto->usuario_id }}</td>
-
 
                                             <td>
                                                 <form action="{{ route('fotos.destroy',$foto->id) }}" method="POST">
@@ -66,6 +67,7 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>

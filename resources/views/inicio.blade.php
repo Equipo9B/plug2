@@ -18,7 +18,7 @@
                     <th>{{$data->name}}</th>
                     <th>{{$data->correo}}</th>
                     <th>{{$data->contraseña}}</th>
-                    <td><a href="logout">LOGOUT</a></td>
+                    <td><a href="{{ route('usuarioFoto') }}">Fotos de Usuario</a></td>
                 </tbody>
             </table>
         </div>

@@ -24,6 +24,14 @@ class FotoController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $fotos->perPage());
     }
 
+    public function usuarioFoto()
+    {
+        $fotos = Foto::paginate();
+
+        return view('foto.usuarioFoto', compact('fotos'))
+            ->with('i', (request()->input('page', 1) - 1) * $fotos->perPage());
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -50,7 +58,7 @@ class FotoController extends Controller
         $requestData["foto"]='/storage/'.$path;
 
         $foto = Foto::create($requestData);
-        return redirect()->route('fotos.index')
+        return redirect()->route('fotos.usuarioFoto')
             ->with('success', 'Foto created successfully.');
     }
 
