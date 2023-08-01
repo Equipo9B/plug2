@@ -51,6 +51,9 @@
 
                             @if (Session()->has('loginId'))
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('perfil') }}">{{ __('Perfil') }}</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('logout') }}">{{ __('Cerrar Sesión') }}</a>
                                 </li>
                             @endif

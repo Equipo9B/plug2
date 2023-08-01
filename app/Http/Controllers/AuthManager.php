@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Foto;
+
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -67,10 +69,26 @@ class AuthManager extends Controller
 
     public function inicio(){
         $data = array();
+        $data2 = array();
+        $usuarios = array();
+        $fotos = array();
         if(Session::has('loginId')){
             $data = Usuario::where('id','=',Session::get('loginId'))->first();
+            $usuarios = Usuario::get();
+            $fotos = Foto::get();
         }
-        return view('inicio',compact('data'));
+        return view('inicio',compact('data','fotos','usuarios'));
+    }
+
+    public function perfil(){
+        $data = array();
+        $fotos = array();
+        if(Session::has('loginId')){
+            $data = Usuario::where('id','=',Session::get('loginId'))->first();
+            $fotos = Foto::get();
+
+        }
+        return view('perfil',compact('data','fotos'));
     }
 
     function logout(){

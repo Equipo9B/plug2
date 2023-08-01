@@ -44,6 +44,9 @@ Route::post('/registro', [AuthManager::class, 'registroPost'])->name('registroPo
 
 Route::get('/inicio', [AuthManager::class, 'inicio'])->name('inicio')->middleware('isLoggedIn');
 
+Route::get('/perfil', [AuthManager::class, 'perfil'])->name('perfil')->middleware('isLoggedIn');
+
+
 Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 
 Route::get('/usuarioFoto', [FotoController::class, 'usuarioFoto'])->name('usuarioFoto');

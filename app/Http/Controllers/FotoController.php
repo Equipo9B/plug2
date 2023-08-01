@@ -58,7 +58,7 @@ class FotoController extends Controller
         $requestData["foto"]='/storage/'.$path;
 
         $foto = Foto::create($requestData);
-        return redirect()->route('fotos.usuarioFoto')
+        return redirect()->route('usuarioFoto')
             ->with('success', 'Foto created successfully.');
     }
 
@@ -101,7 +101,7 @@ class FotoController extends Controller
 
         $foto->update($request->all());
 
-        return redirect()->route('fotos.index')
+        return redirect()->route('usuarioFoto')
             ->with('success', 'Foto updated successfully');
     }
 
@@ -114,7 +114,7 @@ class FotoController extends Controller
     {
         $foto = Foto::find($id)->delete();
 
-        return redirect()->route('fotos.index')
+        return redirect()->route('usuarioFoto')
             ->with('success', 'Foto deleted successfully');
     }
 }
