@@ -50,6 +50,7 @@ class AuthManager extends Controller
             'genero'=>'required',
             'busqueda'=>'required',
             'carrera'=>'required',
+            'interes'=>'required',
         ]);
 
         $data['name'] = $request->name;
@@ -59,6 +60,8 @@ class AuthManager extends Controller
         $data['genero'] = $request->genero;
         $data['busqueda'] = $request->busqueda;
         $data['carrera'] = $request->carrera;
+        $data['interes'] = $request->interes;
+
 
         $usuario = Usuario::create($data);
         if(!$usuario){

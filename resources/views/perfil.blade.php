@@ -1,37 +1,55 @@
 @extends('layouts.app')
 
+@section('template_title')
+    Perfil
+@endsection
+
 @section('content')
-<h1>Perfil</h1>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
-                <div class="card-header">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
         <div class="col-md-4 col-md-offset-4" style="margin-top:20px">
-            <h4>Visualizando Perfil:</h4>
-            <hr>
+            <div class="card-header">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+
+                    <span id="card_title">
+                        {{ __('Perfil') }}
+                    </span>
+
+                     <div class="float-right">
+                        <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$data->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar perfil ') }}</a>
+                        </a>
+                      </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <thead class="thead">
+                    <tr>
                     <th>Nombre</th>
                     <th>Correo</th>
-                    <th>Genero</th>
                     <th>Fecha de Nacimiento</th>
-                    <th>Carrera</th>
-                    <th>Acción:</th>
+                    <th>Genero</th>
+                    <th>Busqueda</th>
+                    <th>Carrera (De usuario)</th>
+                    <th>Carrera (Interes)</th>
+                </tr>
                 </thead>
-            </div>
-                    </div>
-                </div>
                 <tbody>
                     <th>{{$data->name}}</th>
                     <th>{{$data->correo}}</th>
-                    <th>{{$data->genero}}</th>
                     <th>{{$data->fecha_nac}}</th>
+                    <th>{{$data->genero}}</th>
+                    <th>{{$data->busqueda}}</th>
                     <th>{{$data->carrera}}</th>
-                    <td><a href="{{ route('usuarioFoto') }}">Fotos de Usuario</a></td>
+                    <th>{{$data->interes}}</th>
                 </tbody>
             </table>
+                </div>
+            </div>
 
             <div class="card-header">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -65,8 +83,6 @@
             </table>
         </div>
     </div>
-</div>
-</div>
 </div>
 </div>
 </div>

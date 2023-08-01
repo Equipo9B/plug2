@@ -75,7 +75,7 @@
         <select class="form-select" id="busqueda" name="busqueda" aria-label="Default select example">
             <option selected>Selecciona una opción</option>
             <option value="Hombres">Hombres</option>
-            <option value="Mujeres">Mujers</option>
+            <option value="Mujeres">Mujeres</option>
             <option value="Todos">Todos</option>
         </select>
       </div>
@@ -83,6 +83,20 @@
       <div class="mb-3">
         <label for="carrera" class="form-label">Carrera:</label>
         <select class="form-select" id="carrera" name="carrera" aria-label="Default select example">
+            <option selected>Selecciona una carrera</option>
+            <option value="Contaduria">Contaduria</option>
+            <option value="Tecnonlogías de la información">Tecnonlogías de la información</option>
+            <option value="Energías renovables">Energías renovables</option>
+            <option value="Mecánica industrial">Mecánica industrial</option>
+            <option value="Mantenimiento industrial">Mantenimiento industrial</option>
+            <option value="Mantenimiento petrolero">Mantenimiento petrolero</option>
+            <option value="Mecatrónica">Mecatrónica</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="interes" class="form-label">Carrera de Interes:</label>
+        <select class="form-select" id="interes" name="interes" aria-label="Default select example">
             <option selected>Selecciona una carrera</option>
             <option value="Contaduria">Contaduria</option>
             <option value="Tecnonlogías de la información">Tecnonlogías de la información</option>

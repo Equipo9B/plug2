@@ -47,7 +47,7 @@ class UsuarioController extends Controller
 
         $usuario = Usuario::create($request->all());
 
-        return redirect()->route('usuarios.index')
+        return redirect()->route('perfil')
             ->with('success', 'Usuario created successfully.');
     }
 
@@ -90,7 +90,7 @@ class UsuarioController extends Controller
 
         $usuario->update($request->all());
 
-        return redirect()->route('usuarios.index')
+        return redirect()->route('perfil')
             ->with('success', 'Usuario updated successfully');
     }
 
@@ -103,7 +103,7 @@ class UsuarioController extends Controller
     {
         $usuario = Usuario::find($id)->delete();
 
-        return redirect()->route('usuarios.index')
+        return redirect()->route('perfil')
             ->with('success', 'Usuario deleted successfully');
     }
 }
