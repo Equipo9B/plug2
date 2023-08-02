@@ -12,6 +12,8 @@
                     <th>Correo</th>
                     <th>Genero</th>
                     <th>Carrera</th>
+                    <th>Buscando:</th>
+
                     <th>Foto:</th>
                 </thead>
                 <tbody>
@@ -19,29 +21,112 @@
                     @php
                         $idUsu=Session::get('loginId');
                         $idActu=$usuario->id;
+
+                        $usSex=$data->genero;
+                        if ($usSex!='Hombre' && $usSex!='Mujer') {
+                            $usSex='Todos';
+                        }
+                        $usSex2=$usuario->genero;
+                        if ($usSex2!='Hombre' && $usSex2!='Mujer') {
+                            $usSex2='Todos';
+                        }
+
+                        $prefSex=$data->busqueda;
+                        $prefSex2=$usuario->busqueda;
+                        if($prefSex2=='Todos'){
+                            $prefSex2=$usSex;
+                        }
+
+                        $prefCarr=$data->interes;
+                        $prefCarr2=$usuario->interes;
+
+                        $usCarr=$data->carrera;
+                        $usCarr2=$usuario->carrera;
+
+
                     @endphp
-                    @if($idUsu!=$idActu)
-                    <tr>
-                        <td>{{$usuario->name}}</td>
-                        <td>{{$usuario->correo}}</td>
-                        <td>{{$usuario->genero}}</td>
-                        <td>{{$usuario->carrera}}</td>
-                        <td>
-                            @foreach ($fotos as $foto)
-                            @php
-                                $idUs = $usuario->id;
-                                $idFoto = $foto->usuario_id;
-                            @endphp
-                                @if($idFoto==$idUs)
-                                        <img src="{{ asset($foto->foto)}}" width="150" height="150" class="img img-responsive">
-                                        @php
-                                            break;
-                                        @endphp
-                                @endif
-                            @endforeach
-                            </td>
-                        </tr>
+                    @switch($prefSex)
+                        @case('Hombre')
+                        @if($usSex==$prefSex2 && $usSex2=='Hombre' && $idUsu!=$idActu)
+                        <tr>
+                            <td>{{$usuario->name}}</td>
+                            <td>{{$usuario->correo}}</td>
+                            <td>{{$usuario->genero}}</td>
+                            <td>{{$usuario->carrera}}</td>
+                            <td>{{$usuario->busqueda}}</td>
+
+                            <td>
+                                @foreach ($fotos as $foto)
+                                @php
+                                    $idUs = $usuario->id;
+                                    $idFoto = $foto->usuario_id;
+                                @endphp
+                                    @if($idFoto==$idUs)
+                                            <img src="{{ asset($foto->foto)}}" width="150" height="150" class="img img-responsive">
+                                            @php
+                                                break;
+                                            @endphp
+                                    @endif
+                                @endforeach
+                                </td>
+                            </tr>
+                            @endif
+                            @break
+                        @case('Mujer')
+                        @if($usSex==$prefSex2 && $usSex2=='Mujer' && $idUsu!=$idActu)
+                        <tr>
+                            <td>{{$usuario->name}}</td>
+                            <td>{{$usuario->correo}}</td>
+                            <td>{{$usuario->genero}}</td>
+                            <td>{{$usuario->carrera}}</td>
+                            <td>{{$usuario->busqueda}}</td>
+
+                            <td>
+                                @foreach ($fotos as $foto)
+                                @php
+                                    $idUs = $usuario->id;
+                                    $idFoto = $foto->usuario_id;
+                                @endphp
+                                    @if($idFoto==$idUs)
+                                            <img src="{{ asset($foto->foto)}}" width="150" height="150" class="img img-responsive">
+                                            @php
+                                                break;
+                                            @endphp
+                                    @endif
+                                @endforeach
+                                </td>
+                            </tr>
                         @endif
+                        @break
+                        @case('Todos')
+                        @if($usSex==$prefSex2 && $idUsu!=$idActu)
+                        <tr>
+                            <td>{{$usuario->name}}</td>
+                            <td>{{$usuario->correo}}</td>
+                            <td>{{$usuario->genero}}</td>
+                            <td>{{$usuario->carrera}}</td>
+                            <td>{{$usuario->busqueda}}</td>
+
+                            <td>
+                                @foreach ($fotos as $foto)
+                                @php
+                                    $idUs = $usuario->id;
+                                    $idFoto = $foto->usuario_id;
+                                @endphp
+                                    @if($idFoto==$idUs)
+                                            <img src="{{ asset($foto->foto)}}" width="150" height="150" class="img img-responsive">
+                                            @php
+                                                break;
+                                            @endphp
+                                    @endif
+                                @endforeach
+                                </td>
+                            </tr>
+                        @endif
+                        @break
+                        @default
+                    @endswitch
+
                     @endforeach
                 </tbody>
             </table>

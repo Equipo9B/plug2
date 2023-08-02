@@ -27,8 +27,10 @@
             <div class="card-body">
                 <div class="table-responsive">
             <table class="table table-striped table-hover">
+
                 <thead class="thead">
                     <tr>
+                    <th>Id</th>
                     <th>Nombre</th>
                     <th>Correo</th>
                     <th>Fecha de Nacimiento</th>
@@ -39,6 +41,7 @@
                 </tr>
                 </thead>
                 <tbody>
+                    <th>{{$data->id}}</th>
                     <th>{{$data->name}}</th>
                     <th>{{$data->correo}}</th>
                     <th>{{$data->fecha_nac}}</th>

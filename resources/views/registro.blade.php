@@ -74,8 +74,8 @@
         <label for="busqueda" class="form-label">Buscar:</label>
         <select class="form-select" id="busqueda" name="busqueda" aria-label="Default select example">
             <option selected>Selecciona una opción</option>
-            <option value="Hombres">Hombres</option>
-            <option value="Mujeres">Mujeres</option>
+            <option value="Hombre">Hombres</option>
+            <option value="Mujer">Mujeres</option>
             <option value="Todos">Todos</option>
         </select>
       </div>
