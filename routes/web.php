@@ -6,6 +6,8 @@ use App\http\Controllers\HobbieController;
 use App\http\Controllers\UsuarioController;
 use App\http\Controllers\FotoController;
 use App\http\Controllers\AuthManager;
+use App\http\Controllers\CoincidenciaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,9 @@ Route::resource('/hobbies', HobbieController::class);
 Route::resource('usuarios', UsuarioController::class);
 
 Route::resource('fotos', FotoController::class);
+
+Route::resource('coincidencias', CoincidenciaController::class);
+
 
 //Route::get('usuario','PerfilController@index');
 

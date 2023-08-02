@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property Foto[] $fotos
  * @package App
+ * @property Coincidencia[] $coincidencias
+ * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Usuario extends Model
@@ -51,6 +53,15 @@ class Usuario extends Model
     public function fotos()
     {
         return $this->hasMany('App\Models\Foto', 'usuario_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function coincidencias()
+    {
+        return $this->hasMany('App\Models\Coincidencia', 'usuarioId1', 'id');
+        return $this->hasMany('App\Models\Coincidencia', 'usuarioId2', 'id');
     }
 
 

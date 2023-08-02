@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Foto;
+
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class UsuarioController
@@ -60,8 +65,10 @@ class UsuarioController extends Controller
     public function show($id)
     {
         $usuario = Usuario::find($id);
+        $fotos = array();
+        $fotos = Foto::get();
 
-        return view('usuario.show', compact('usuario'));
+        return view('usuario.show', compact('usuario','fotos'));
     }
 
     /**

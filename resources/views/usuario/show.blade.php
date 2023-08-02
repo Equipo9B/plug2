@@ -17,8 +17,9 @@
                                 </h1>
                                 </span>
                         </div>
-                        <div class="float-left">
+                        <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('inicio') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-primary" href="{{ route('inicio') }}"> {{ __('Match') }}</a>
                         </div>
                     </div>
 
@@ -47,6 +48,18 @@
                             {{ $usuario->carrera }}
                         </div>
 
+                        <div class="form-group">
+                            <strong>Fotos:</strong>
+                            @foreach ($fotos as $foto)
+                                @php
+                                    $usuarioId = $usuario->id;
+                                    $idFoto = $foto->usuario_id;
+                                @endphp
+                                    @if($idFoto==$usuarioId)
+                                            <img src="{{ asset($foto->foto)}}" width="100" height="150" class="img img-responsive">
+                                    @endif
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

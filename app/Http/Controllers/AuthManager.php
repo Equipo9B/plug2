@@ -89,7 +89,6 @@ class AuthManager extends Controller
         if(Session::has('loginId')){
             $data = Usuario::where('id','=',Session::get('loginId'))->first();
             $fotos = Foto::get();
-
         }
         return view('perfil',compact('data','fotos'));
     }
