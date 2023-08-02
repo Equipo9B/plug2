@@ -12,9 +12,11 @@
                     <th>Correo</th>
                     <th>Genero</th>
                     <th>Carrera</th>
+                    <th>Carrera(a buscar)</th>
                     <th>Buscando:</th>
-
                     <th>Foto:</th>
+                    <th>Acción:</th>
+
                 </thead>
                 <tbody>
                     @foreach ($usuarios as $usuario)
@@ -47,14 +49,14 @@
                     @endphp
                     @switch($prefSex)
                         @case('Hombre')
-                        @if($usSex==$prefSex2 && $usSex2=='Hombre' && $idUsu!=$idActu)
+                        @if($usSex==$prefSex2 && $usSex2=='Hombre' && $prefCarr==$usCarr2 && $prefCarr2==$usCarr && $idUsu!=$idActu)
                         <tr>
                             <td>{{$usuario->name}}</td>
                             <td>{{$usuario->correo}}</td>
                             <td>{{$usuario->genero}}</td>
                             <td>{{$usuario->carrera}}</td>
+                            <td>{{$usuario->interes}}</td>
                             <td>{{$usuario->busqueda}}</td>
-
                             <td>
                                 @foreach ($fotos as $foto)
                                 @php
@@ -69,18 +71,24 @@
                                     @endif
                                 @endforeach
                                 </td>
+                                <td>
+                                    <div class="float-right">
+                                        <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$usuario->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}
+                                    </a>
+                                      </div>
+                                    </td>
                             </tr>
                             @endif
                             @break
                         @case('Mujer')
-                        @if($usSex==$prefSex2 && $usSex2=='Mujer' && $idUsu!=$idActu)
+                        @if($usSex==$prefSex2 && $usSex2=='Mujer' && $prefCarr==$usCarr2 && $prefCarr2==$usCarr && $idUsu!=$idActu)
                         <tr>
                             <td>{{$usuario->name}}</td>
                             <td>{{$usuario->correo}}</td>
                             <td>{{$usuario->genero}}</td>
                             <td>{{$usuario->carrera}}</td>
+                            <td>{{$usuario->interes}}</td>
                             <td>{{$usuario->busqueda}}</td>
-
                             <td>
                                 @foreach ($fotos as $foto)
                                 @php
@@ -95,18 +103,24 @@
                                     @endif
                                 @endforeach
                                 </td>
+                                <td>
+                                    <div class="float-right">
+                                        <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$usuario->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}
+                                    </a>
+                                      </div>
+                                    </td>
                             </tr>
                         @endif
                         @break
                         @case('Todos')
-                        @if($usSex==$prefSex2 && $idUsu!=$idActu)
+                        @if($usSex==$prefSex2 && $prefCarr==$usCarr2 && $prefCarr2==$usCarr && $idUsu!=$idActu )
                         <tr>
                             <td>{{$usuario->name}}</td>
                             <td>{{$usuario->correo}}</td>
                             <td>{{$usuario->genero}}</td>
                             <td>{{$usuario->carrera}}</td>
+                            <td>{{$usuario->interes}}</td>
                             <td>{{$usuario->busqueda}}</td>
-
                             <td>
                                 @foreach ($fotos as $foto)
                                 @php
@@ -121,6 +135,12 @@
                                     @endif
                                 @endforeach
                                 </td>
+                                <td>
+                                    <div class="float-right">
+                                        <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$usuario->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}
+                                    </a>
+                                      </div>
+                                    </td>
                             </tr>
                         @endif
                         @break

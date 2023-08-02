@@ -11,10 +11,14 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Usuario</span>
+                            <span class="card-title">
+                                <h1>
+                                {{ $usuario->name }}
+                                </h1>
+                                </span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('usuarios.index') }}"> {{ __('Back') }}</a>
+                        <div class="float-left">
+                            <a class="btn btn-primary" href="{{ route('inicio') }}"> {{ __('Regresar') }}</a>
                         </div>
                     </div>
 
@@ -28,10 +32,7 @@
                             <strong>Correo:</strong>
                             {{ $usuario->correo }}
                         </div>
-                        <div class="form-group">
-                            <strong>Contraseña:</strong>
-                            {{ $usuario->contraseña }}
-                        </div>
+
                         <div class="form-group">
                             <strong>Fecha Nac:</strong>
                             {{ $usuario->fecha_nac }}
@@ -40,16 +41,9 @@
                             <strong>Genero:</strong>
                             {{ $usuario->genero }}
                         </div>
+
                         <div class="form-group">
-                            <strong>Busqueda:</strong>
-                            {{ $usuario->busqueda }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Interes:</strong>
-                            {{ $usuario->interes }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Interes:</strong>
+                            <strong>Carrera:</strong>
                             {{ $usuario->carrera }}
                         </div>
 
