@@ -15,37 +15,55 @@
                                 @php
                                     $id1=Session::get('loginId');
                                     $id2=$usuario->id;
-                                    $contadorNo=0;
-                                    $contadorSi=0;
-
+                                    $match1='No';
                                 @endphp
                                 @foreach ($coincidencias as $coincidencia)
                                     @php
                                         $coinId1 = $coincidencia->usuarioId1;
-                                        if ($coinId1!=$id1) {
-                                            $contadorNo=$contadorNo+1;
+                                        $coinId2 = $coincidencia->usuarioId2;
+                                        $coinMa1 = $coincidencia->match1;
+                                        $coinMa2 = $coincidencia->match2;
+
+                                        if ($coinId1==$id1 && $coinId2==$id2 && $coinMa1=='1' && $coinMa2=='0') {
+                                            $match1="1a2";
                                         }
-                                        if ($coinId1==$id1) {
-                                            $contadorSi=$contadorSi+1;
+                                        if ($coinId1==$id2 && $coinId2==$id1 && $coinMa1=='1' && $coinMa2=='0') {
+                                            $match1="2a1";
                                         }
-                                        if ($contadorSi==0) {
-                                            $match="No";
+
+                                        if ($coinId1==$id2 && $coinId2==$id1 && $coinMa1=='1' && $coinMa2=='1') {
+                                            $match1="Full";
                                         }
-                                        if ($contadorSi!=0) {
-                                            $match="Si";
+                                        if ($coinId1==$id1 && $coinId2==$id2 && $coinMa1=='1' && $coinMa2=='1') {
+                                            $match1="Full";
                                         }
                                     @endphp
                                 @endforeach
                                 </span>
                         </div>
+
                         <div class="float-right">
                             <form method="POST" action="{{ route('coincidencias.store') }}" role="form" enctype="multipart/form-data">
                                 <a class="btn btn-primary" href="{{ route('inicio') }}"> {{ __('Regresar') }}</a>
                                 @csrf
-                                @if ($match=='No')
-                                <button type="submit" class="btn btn-primary">{{ __('Match!') }}</button>
+                                @if ($match1=='Full')
+                                <h1>Ya hicieron match ambos</h1>
                                 @endif
-                                @include('coincidencia.form')
+
+                                @if ($match1=='1a2')
+                                <h1>Ya le diste match, espera respuesta</h1>
+                                @endif
+
+                                @if ($match1=='2a1')
+                                <button type="submit" class="btn btn-primary">{{ __('Match!') }}</button>
+                                @include('coincidencia.form2')
+                                @endif
+
+                                @if ($match1=='No')
+                                <button type="submit" class="btn btn-primary">{{ __('Match!') }}</button>
+                                @include('coincidencia.form3')
+                                @endif
+
                             </form>
                         </div>
                     </div>

@@ -2,7 +2,6 @@
     <div class="box-body">
 
         <div class="form-group">
-            <h1>asdsad</h1>
             {{ Form::hidden('usuarioId1', $id1, ['class' => 'form-control' . ($errors->has('usuarioId1') ? ' is-invalid' : ''), 'placeholder' => 'Usuarioid1']) }}
             {!! $errors->first('usuarioId1', '<div class="invalid-feedback">:message</div>') !!}
         </div>

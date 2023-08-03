@@ -2,12 +2,11 @@
     <div class="box-body">
 
         <div class="form-group">
-            <h1>asdsad</h1>
-            {{ Form::hidden('usuarioId1', $id1, ['class' => 'form-control' . ($errors->has('usuarioId1') ? ' is-invalid' : ''), 'placeholder' => 'Usuarioid1']) }}
+            {{ Form::hidden('usuarioId1', $id2, ['class' => 'form-control' . ($errors->has('usuarioId1') ? ' is-invalid' : ''), 'placeholder' => 'Usuarioid1']) }}
             {!! $errors->first('usuarioId1', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::hidden('usuarioId2', $id2, ['class' => 'form-control' . ($errors->has('usuarioId2') ? ' is-invalid' : ''), 'placeholder' => 'Usuarioid2']) }}
+            {{ Form::hidden('usuarioId2', $id1, ['class' => 'form-control' . ($errors->has('usuarioId2') ? ' is-invalid' : ''), 'placeholder' => 'Usuarioid2']) }}
             {!! $errors->first('usuarioId2', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -15,7 +14,7 @@
             {!! $errors->first('match1', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::hidden('match2', '0', ['class' => 'form-control' . ($errors->has('match2') ? ' is-invalid' : ''), 'placeholder' => 'Match2']) }}
+            {{ Form::hidden('match2', '1', ['class' => 'form-control' . ($errors->has('match2') ? ' is-invalid' : ''), 'placeholder' => 'Match2']) }}
             {!! $errors->first('match2', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
