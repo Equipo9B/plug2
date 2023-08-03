@@ -26,8 +26,6 @@ class Coincidencia extends Model
     static $rules = [
 		'usuarioId1' => 'required',
 		'usuarioId2' => 'required',
-		'match1' => 'required',
-		'match2' => 'required',
     ];
 
     protected $perPage = 20;

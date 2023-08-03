@@ -37,7 +37,9 @@ class CoincidenciaController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * @param  int $id1
+     * @param  int $id2
+
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
@@ -46,6 +48,15 @@ class CoincidenciaController extends Controller
         request()->validate(Coincidencia::$rules);
 
         $coincidencia = Coincidencia::create($request->all());
+
+        return redirect()->route('coincidencias.index')
+            ->with('success', 'Usuario created successfully.');
+    }
+
+    public function store2($id1,$id2)
+    {
+        DB::insert('insert into coincidencias (usuarioId1, usuarioId2, match1) values ("10", "10", "1")');
+
 
         return redirect()->route('coincidencias.index')
             ->with('success', 'Coincidencia created successfully.');

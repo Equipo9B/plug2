@@ -12,14 +12,41 @@
                     <div class="card-header">
                         <div class="float-left">
                             <span class="card-title">
-                                <h1>
-                                {{ $usuario->name }}
-                                </h1>
+                                @php
+                                    $id1=Session::get('loginId');
+                                    $id2=$usuario->id;
+                                    $contadorNo=0;
+                                    $contadorSi=0;
+
+                                @endphp
+                                @foreach ($coincidencias as $coincidencia)
+                                    @php
+                                        $coinId1 = $coincidencia->usuarioId1;
+                                        if ($coinId1!=$id1) {
+                                            $contadorNo=$contadorNo+1;
+                                        }
+                                        if ($coinId1==$id1) {
+                                            $contadorSi=$contadorSi+1;
+                                        }
+                                        if ($contadorSi==0) {
+                                            $match="No";
+                                        }
+                                        if ($contadorSi!=0) {
+                                            $match="Si";
+                                        }
+                                    @endphp
+                                @endforeach
                                 </span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('inicio') }}"> {{ __('Regresar') }}</a>
-                            <a class="btn btn-primary" href="{{ route('inicio') }}"> {{ __('Match') }}</a>
+                            <form method="POST" action="{{ route('coincidencias.store') }}" role="form" enctype="multipart/form-data">
+                                <a class="btn btn-primary" href="{{ route('inicio') }}"> {{ __('Regresar') }}</a>
+                                @csrf
+                                @if ($match=='No')
+                                <button type="submit" class="btn btn-primary">{{ __('Match!') }}</button>
+                                @endif
+                                @include('coincidencia.form')
+                            </form>
                         </div>
                     </div>
 

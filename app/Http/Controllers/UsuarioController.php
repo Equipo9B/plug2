@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Foto;
+use App\Models\Coincidencia;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -67,8 +68,11 @@ class UsuarioController extends Controller
         $usuario = Usuario::find($id);
         $fotos = array();
         $fotos = Foto::get();
+        $coincidencias = array();
+        $coincidencias = Coincidencia::get();
 
-        return view('usuario.show', compact('usuario','fotos'));
+
+        return view('usuario.show', compact('usuario','fotos','coincidencias'));
     }
 
     /**

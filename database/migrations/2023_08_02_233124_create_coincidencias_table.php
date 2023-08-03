@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('usuarioId1');
             $table->unsignedBigInteger('usuarioId2');
-            $table->unsignedBigInteger('match1');
-            $table->unsignedBigInteger('match2');
+            $table->unsignedBigInteger('match1')->nullable();
+            $table->unsignedBigInteger('match2')->nullable();
             $table->timestamps();
 
             $table->foreign('usuarioId1')->references('id')

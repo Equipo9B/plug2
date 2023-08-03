@@ -55,3 +55,6 @@ Route::get('/perfil', [AuthManager::class, 'perfil'])->name('perfil')->middlewar
 Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 
 Route::get('/usuarioFoto', [FotoController::class, 'usuarioFoto'])->name('usuarioFoto');
+
+Route::get('/store2', [CoincidenciaController::class, 'store2'])->name('store2');
+
