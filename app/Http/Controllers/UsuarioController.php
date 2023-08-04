@@ -71,9 +71,12 @@ class UsuarioController extends Controller
         $fotos = Foto::get();
         $coincidencias = array();
         $coincidencias = Coincidencia::get();
+        $id = Auth::user()->id;
+        $messengerColor = Auth::user()->messenger_color;
+        $dark_mode = Auth::user()->dark_mode;
 
 
-        return view('usuario.show', compact('usuario','fotos','coincidencias'));
+        return view('usuario.show', compact('usuario','fotos','coincidencias','id','messengerColor','dark_mode'));
     }
 
     /**

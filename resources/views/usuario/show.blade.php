@@ -5,7 +5,10 @@
 @endsection
 
 @section('content')
+@include('Chatify::layouts.headLinks')
+
     <section class="content container-fluid">
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -16,8 +19,8 @@
                                     $id1=Auth::user()->id;
                                     $id2=$usuario->id;
                                     $match1='No';
-
                                 @endphp
+
                                 @foreach ($coincidencias as $coincidencia)
                                     @php
                                         $coinId1 = $coincidencia->usuarioId1;
@@ -46,7 +49,7 @@
                         <div class="float-right">
 
                                 @if ($match1=='Full')
-                                <h1>Ya hicieron match ambos</h1>
+                                <a class="btn btn-sm btn-success" href="{{ route('chatify3',$id2) }}">{{ __('Chats') }}</a>
                                 @endif
 
                                 @if ($match1=='1a2')

@@ -86,6 +86,28 @@ class AuthManager extends Controller
         return view('inicio',compact('data','fotos','usuarios'));
     }
 
+    public function chatify2(){
+        $idus= Auth::user()->id;
+            $usuarios = User::get();
+            $fotos = Foto::get();
+            $id = $idus;
+            $messengerColor = Auth::user()->messenger_color;
+            $dark_mode = Auth::user()->dark_mode;
+
+        return view('vendor\Chatify.pages.app',compact('id','messengerColor','dark_mode'));
+    }
+
+    public function chatify3($idUsu){
+        $idus= Auth::user()->id;
+            $usuarios = User::get();
+            $fotos = Foto::get();
+            $id = $idUsu;
+            $messengerColor = Auth::user()->messenger_color;
+            $dark_mode = Auth::user()->dark_mode;
+
+        return view('vendor\Chatify.pages.app',compact('id','messengerColor','dark_mode'));
+    }
+
     /**
      * Display the specified resource.
      *

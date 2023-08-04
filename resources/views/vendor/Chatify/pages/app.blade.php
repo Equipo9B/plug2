@@ -2,6 +2,16 @@
 
 @section('content')
 @include('Chatify::layouts.headLinks')
+@php
+    use App\Models\Foto;
+    use App\Models\Coincidencia;
+    use App\Models\User;
+    use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+@endphp
+
 <div class="messenger">
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="messenger-listView {{ !!$id ? 'conversation-active' : '' }}">
@@ -16,7 +26,6 @@
                 </nav>
             </nav>
             {{-- Search input --}}
-            <input type="text" class="messenger-search" placeholder="Search" />
             {{-- Tabs --}}
             {{-- <div class="messenger-listView-tabs">
                 <a href="#" class="active-tab" data-view="users">
@@ -38,7 +47,9 @@
                {!! view('Chatify::layouts.listItem', ['get' => 'saved']) !!}
                {{-- Contact --}}
                <p class="messenger-title"><span>All Messages</span></p>
+
                <div class="listOfContacts" style="width: 100%;height: calc(100% - 272px);position: relative;"></div>
+
            </div>
              {{-- ---------------- [ Search Tab ] ---------------- --}}
            <div class="messenger-tab search-tab app-scroll" data-view="search">
@@ -66,7 +77,7 @@
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
-                    <a href="/"><i class="fas fa-home"></i></a>
+                    <a href="inicio"><i class="fas fa-home"></i></a>
                     <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
                 </nav>
             </nav>
