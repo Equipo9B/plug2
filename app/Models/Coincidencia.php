@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property Usuario $usuario
  * @property Usuario $usuario
+ * @property User $user
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -38,21 +39,30 @@ class Coincidencia extends Model
     protected $fillable = ['usuarioId1','usuarioId2','match1','match2'];
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+        /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function usuario()
+    public function mensajes()
     {
-        return $this->hasOne('App\Models\Usuario', 'id', 'usuarioId1');
+        return $this->hasMany('App\Models\Mensaje', 'idmatch', 'id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function usuario2()
+    public function user()
     {
-        return $this->hasOne('App\Models\Usuario', 'id', 'usuarioId2');
+        return $this->hasOne('App\Models\User', 'id', 'usuarioId1');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user2()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'usuarioId2');
+    }
+
 
 
 }

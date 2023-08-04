@@ -7,7 +7,7 @@ use App\http\Controllers\UsuarioController;
 use App\http\Controllers\FotoController;
 use App\http\Controllers\AuthManager;
 use App\http\Controllers\CoincidenciaController;
-
+use App\http\Controllers\MensajeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,7 @@ use App\http\Controllers\CoincidenciaController;
 */
 
 Route::get('/', function () {
-    return view('usuario');
+    return view('auth.login');
 });
 
 //Route::get('/usuarios', [PerfilController::class, 'show']);
@@ -34,6 +34,7 @@ Route::resource('fotos', FotoController::class);
 
 Route::resource('coincidencias', CoincidenciaController::class);
 
+Route::resource('mensajes', MensajeController::class);
 
 //Route::get('usuario','PerfilController@index');
 
@@ -41,18 +42,21 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/auth.login', [AuthManager::class, 'loginUs'])->name('loginUs')->middleware('AlreadyLoggedIn');
+
 Route::get('/ingreso', [AuthManager::class, 'ingresoVista'])->name('ingresoVista')->middleware('AlreadyLoggedIn');
 Route::post('/ingreso', [AuthManager::class, 'ingresoPost'])->name('ingresoPost');
 
 Route::get('/registro', [AuthManager::class, 'registroVista'])->name('registroVista')->middleware('AlreadyLoggedIn');
 Route::post('/registro', [AuthManager::class, 'registroPost'])->name('registroPost');
 
-Route::get('/inicio', [AuthManager::class, 'inicio'])->name('inicio')->middleware('isLoggedIn');
+Route::get('/inicio', [AuthManager::class, 'inicio'])->name('inicio');
 
-Route::get('/perfil', [AuthManager::class, 'perfil'])->name('perfil')->middleware('isLoggedIn');
+Route::get('/perfil', [AuthManager::class, 'perfil'])->name('perfil');
 
+Route::get('/inicio2/{id}', [AuthManager::class, 'inicio2'])->name('inicio2');
 
-Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
+Route::get('/salir', [AuthManager::class, 'salir'])->name('salir');
 
 Route::get('/usuarioFoto', [FotoController::class, 'usuarioFoto'])->name('usuarioFoto');
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Foto;
 use App\Models\Coincidencia;
+use App\Models\User;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -65,7 +66,7 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
         $fotos = array();
         $fotos = Foto::get();
         $coincidencias = array();
@@ -83,7 +84,7 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
 
         return view('usuario.edit', compact('usuario'));
     }
@@ -92,12 +93,12 @@ class UsuarioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Usuario $usuario
+     * @param  User $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, User $usuario)
     {
-        request()->validate(Usuario::$rules);
+        request()->validate(User::$rules);
 
         $usuario->update($request->all());
 

@@ -8,13 +8,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('correo electronico') }}
-            {{ Form::email('correo', $usuario->correo, ['class' => 'form-control' . ($errors->has('correo') ? ' is-invalid' : ''), 'placeholder' => 'Correo']) }}
-            {!! $errors->first('correo', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::email('email', $usuario->email, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Correo']) }}
+            {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('contraseña') }}
-            {{ Form::text('contraseña', $usuario->contraseña, ['class' => 'form-control' . ($errors->has('contraseña') ? ' is-invalid' : ''), 'placeholder' => 'Contraseña']) }}
-            {!! $errors->first('contraseña', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::hidden('password', $usuario->password, ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'placeholder' => 'Contraseña']) }}
+            {!! $errors->first('password', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Fecha de nacimiento') }}
@@ -77,6 +76,7 @@
             <label for="interes" class="form-label">Carrera (a buscar):</label>
             <select class="form-select" id="interes" name="interes" aria-label="Default select example">
                 <option selected>{{ $usuario->interes }}</option>
+                <option value="Todas">Todas</option>
                 <option value="Contaduria">Contaduria</option>
                 <option value="Tecnonlogías de la información">Tecnonlogías de la información</option>
                 <option value="Energías renovables">Energías renovables</option>

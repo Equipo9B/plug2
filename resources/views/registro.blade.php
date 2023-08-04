@@ -98,6 +98,7 @@
         <label for="interes" class="form-label">Carrera de Interes:</label>
         <select class="form-select" id="interes" name="interes" aria-label="Default select example">
             <option selected>Selecciona una carrera</option>
+            <option value="Todas">Todas</option>
             <option value="Contaduria">Contaduria</option>
             <option value="Tecnonlogías de la información">Tecnonlogías de la información</option>
             <option value="Energías renovables">Energías renovables</option>

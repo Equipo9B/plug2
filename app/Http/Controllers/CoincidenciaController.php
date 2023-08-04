@@ -49,7 +49,7 @@ class CoincidenciaController extends Controller
 
         $coincidencia = Coincidencia::create($request->all());
 
-        return redirect()->route('coincidencias.index')
+        return redirect()->route('inicio')
             ->with('success', 'Usuario created successfully.');
     }
 

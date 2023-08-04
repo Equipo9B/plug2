@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Foto;
+use App\Models\Coincidencia;
 
+use App\Models\User;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +14,10 @@ use Illuminate\Support\Facades\Session;
 
 class AuthManager extends Controller
 {
+    function loginUs(){
+        return view('auth.login');
+    }
+
     function ingresoVista(){
         return view('ingreso');
     }
@@ -72,31 +78,43 @@ class AuthManager extends Controller
 
     public function inicio(){
         $data = array();
-        $data2 = array();
         $usuarios = array();
         $fotos = array();
-        if(Session::has('loginId')){
-            $data = Usuario::where('id','=',Session::get('loginId'))->first();
-            $usuarios = Usuario::get();
+            $data = Usuario::where('id','=','6')->first();
+            $usuarios = User::get();
             $fotos = Foto::get();
-        }
         return view('inicio',compact('data','fotos','usuarios'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function inicio2($id){
+        $data = array();
+        $usuarios = array();
+        $fotos = array();
+            $data = User::where('id','=',$id)->first();
+            $usuarios = User::get();
+            $fotos = Foto::get();
+        return view('perfil',compact('data','fotos','usuarios'));
     }
 
     public function perfil(){
         $data = array();
         $fotos = array();
-        if(Session::has('loginId')){
-            $data = Usuario::where('id','=',Session::get('loginId'))->first();
+        $id = Auth::user()->id;
+            $data = User::where('id','=',$id)->first();
             $fotos = Foto::get();
-        }
         return view('perfil',compact('data','fotos'));
     }
 
-    function logout(){
+    function salir(){
         if(Session::has('loginId')){
             Session::pull('loginId');
-            return redirect()->intended(route('ingresoVista'));
+            return redirect()->intended(route('login'));
         }
     }
 }

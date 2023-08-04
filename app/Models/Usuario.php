@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @property Coincidencia[] $coincidencias
  * @package App
+ * @property Mensaje[] $mensajes
+ * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Usuario extends Model
@@ -64,5 +66,13 @@ class Usuario extends Model
         return $this->hasMany('App\Models\Coincidencia', 'usuarioId2', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function mensajes()
+    {
+        return $this->hasMany('App\Models\Coincidencia', 'id1', 'id');
+        return $this->hasMany('App\Models\Coincidencia', 'id2', 'id');
+    }
 
 }

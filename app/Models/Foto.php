@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Foto extends Model
 {
-    
+
     static $rules = [
 		'foto' => 'required',
 		'usuario_id' => 'required',
@@ -42,6 +42,14 @@ class Foto extends Model
     {
         return $this->hasOne('App\Models\Usuario', 'id', 'usuario_id');
     }
-    
+
+        /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'usuario_id');
+    }
+
 
 }

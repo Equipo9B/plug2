@@ -13,9 +13,10 @@
                         <div class="float-left">
                             <span class="card-title">
                                 @php
-                                    $id1=Session::get('loginId');
+                                    $id1=Auth::user()->id;
                                     $id2=$usuario->id;
                                     $match1='No';
+
                                 @endphp
                                 @foreach ($coincidencias as $coincidencia)
                                     @php
@@ -43,9 +44,7 @@
                         </div>
 
                         <div class="float-right">
-                            <form method="POST" action="{{ route('coincidencias.store') }}" role="form" enctype="multipart/form-data">
-                                <a class="btn btn-primary" href="{{ route('inicio') }}"> {{ __('Regresar') }}</a>
-                                @csrf
+
                                 @if ($match1=='Full')
                                 <h1>Ya hicieron match ambos</h1>
                                 @endif
@@ -55,11 +54,21 @@
                                 @endif
 
                                 @if ($match1=='2a1')
+                                @php
+                                    $identificador=$coincidencia->id;
+                                    echo $identificador;
+                                @endphp
+                                <form method="POST" action="{{ route('coincidencias.store',$coincidencia->id) }}" role="form" enctype="multipart/form-data">
+                                <a class="btn btn-primary" href="{{ route('inicio') }}"> {{ __('Regresar') }}</a>
+                                @csrf
                                 <button type="submit" class="btn btn-primary">{{ __('Match!') }}</button>
                                 @include('coincidencia.form2')
                                 @endif
 
                                 @if ($match1=='No')
+                                <form method="POST" action="{{ route('coincidencias.store') }}" role="form" enctype="multipart/form-data">
+                                <a class="btn btn-primary" href="{{ route('inicio') }}"> {{ __('Regresar') }}</a>
+                                @csrf
                                 <button type="submit" class="btn btn-primary">{{ __('Match!') }}</button>
                                 @include('coincidencia.form3')
                                 @endif
@@ -71,20 +80,20 @@
                     <div class="card-body">
 
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre:</strong>
                             {{ $usuario->name }}
                         </div>
                         <div class="form-group">
                             <strong>Correo:</strong>
-                            {{ $usuario->correo }}
+                            {{ $usuario->email }}
                         </div>
 
                         <div class="form-group">
-                            <strong>Fecha Nac:</strong>
+                            <strong>Fecha de Nacimiento:</strong>
                             {{ $usuario->fecha_nac }}
                         </div>
                         <div class="form-group">
-                            <strong>Genero:</strong>
+                            <strong>Sexo:</strong>
                             {{ $usuario->genero }}
                         </div>
 

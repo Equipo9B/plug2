@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Foto;
 use Illuminate\Http\Request;
 
@@ -58,7 +59,7 @@ class FotoController extends Controller
         $requestData["foto"]='/storage/'.$path;
 
         $foto = Foto::create($requestData);
-        return redirect()->route('usuarioFoto')
+        return redirect()->route('perfil')
             ->with('success', 'Foto created successfully.');
     }
 

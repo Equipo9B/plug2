@@ -5,19 +5,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
+                <div class="card-header">{{ __('Perfiles') }}</div>
+                @php
+                    $identificacion=Auth::user()->id;
+                @endphp
+                <div class="float-right">
+                    <a class="btn btn-sm btn-primary " href="{{ route('inicio',Auth::user()->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ingresar') }}
+                </a>
+                  </div>
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection

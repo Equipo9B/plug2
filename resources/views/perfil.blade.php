@@ -43,7 +43,7 @@
                 <tbody>
                     <th>{{$data->id}}</th>
                     <th>{{$data->name}}</th>
-                    <th>{{$data->correo}}</th>
+                    <th>{{$data->email}}</th>
                     <th>{{$data->fecha_nac}}</th>
                     <th>{{$data->genero}}</th>
                     <th>{{$data->busqueda}}</th>
@@ -74,7 +74,7 @@
                     <td>
                     @foreach ($fotos as $foto)
                     @php
-                        $loginId = Session::get('loginId');
+                        $loginId = Auth::user()->id;
                         $idFoto = $foto->usuario_id;
                     @endphp
                         @if($idFoto==$loginId)

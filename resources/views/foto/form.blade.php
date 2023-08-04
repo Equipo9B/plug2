@@ -7,8 +7,7 @@
             {!! $errors->first('foto', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('usuario_id') }}
-            {{ Form::text('usuario_id', $foto->usuario_id, ['class' => 'form-control' . ($errors->has('usuario_id') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Id']) }}
+            {{ Form::hidden('usuario_id', Auth::user()->id, ['class' => 'form-control' . ($errors->has('usuario_id') ? ' is-invalid' : ''), 'placeholder' => 'Usuario Id']) }}
             {!! $errors->first('usuario_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

@@ -29,11 +29,11 @@ use Laravel\Sanctum\HasApiTokens;
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 
-class User extends Model
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table='usuarios';
+    protected $table='users';
     /**
      * The attributes that are mass assignable.
      *
@@ -41,8 +41,8 @@ class User extends Model
      */
     static $rules = [
 		'name' => 'required',
-		'correo' => 'required',
-		'contraseña' => 'required',
+		'email' => 'required',
+		'password' => 'required',
 		'fecha_nac' => 'required',
 		'busqueda' => 'required',
         'carrera' => 'required',
@@ -55,7 +55,7 @@ class User extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','correo','contraseña','fecha_nac','genero','busqueda','interes','carrera'];
+    protected $fillable = ['name','email','password','fecha_nac','genero','busqueda','interes','carrera'];
 
 
     /**
@@ -64,5 +64,23 @@ class User extends Model
     public function fotos()
     {
         return $this->hasMany('App\Models\Foto', 'usuario_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function coincidencias()
+    {
+        return $this->hasMany('App\Models\Coincidencia', 'usuarioId1', 'id');
+        return $this->hasMany('App\Models\Coincidencia', 'usuarioId2', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function mensajes()
+    {
+        return $this->hasMany('App\Models\Coincidencia', 'id1', 'id');
+        return $this->hasMany('App\Models\Coincidencia', 'id2', 'id');
     }
 }

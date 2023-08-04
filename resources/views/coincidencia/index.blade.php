@@ -34,8 +34,8 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-                                        
+                                        <th>Id</th>
+
 										<th>Usuarioid1</th>
 										<th>Usuarioid2</th>
 										<th>Match1</th>
@@ -47,8 +47,8 @@
                                 <tbody>
                                     @foreach ($coincidencias as $coincidencia)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
+                                            <td>{{ $coincidencia->id }}</td>
+
 											<td>{{ $coincidencia->usuarioId1 }}</td>
 											<td>{{ $coincidencia->usuarioId2 }}</td>
 											<td>{{ $coincidencia->match1 }}</td>
