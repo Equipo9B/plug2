@@ -62,7 +62,5 @@ Route::get('/usuarioFoto', [FotoController::class, 'usuarioFoto'])->name('usuari
 
 Route::get('/store2', [CoincidenciaController::class, 'store2'])->name('store2');
 
-Route::get('/chatify2', [AuthManager::class, 'chatify2'])->name('chatify2');
-
 Route::get('/chatify3/{idUsu}', [AuthManager::class, 'chatify3'])->name('chatify3');
 

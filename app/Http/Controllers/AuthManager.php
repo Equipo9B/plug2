@@ -80,21 +80,11 @@ class AuthManager extends Controller
         $data = array();
         $usuarios = array();
         $fotos = array();
-            $data = Usuario::where('id','=','6')->first();
+        $idU = Auth::user()->id;
+            $data = User::where('id','=',$idU)->first();
             $usuarios = User::get();
             $fotos = Foto::get();
         return view('inicio',compact('data','fotos','usuarios'));
-    }
-
-    public function chatify2(){
-        $idus= Auth::user()->id;
-            $usuarios = User::get();
-            $fotos = Foto::get();
-            $id = $idus;
-            $messengerColor = Auth::user()->messenger_color;
-            $dark_mode = Auth::user()->dark_mode;
-
-        return view('vendor\Chatify.pages.app',compact('id','messengerColor','dark_mode'));
     }
 
     public function chatify3($idUsu){
