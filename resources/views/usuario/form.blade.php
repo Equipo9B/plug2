@@ -5,21 +5,26 @@
             {{ Form::label('Nombre') }}
             {{ Form::text('name', $usuario->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placehoalder' => 'Name']) }}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div>        <br>
+
         <div class="form-group">
             {{ Form::label('correo electronico') }}
             {{ Form::email('email', $usuario->email, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Correo']) }}
             {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div>        <br>
+
         <div class="form-group">
             {{ Form::hidden('password', $usuario->password, ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'placeholder' => 'Contraseña']) }}
             {!! $errors->first('password', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
         <div class="form-group">
             {{ Form::label('Fecha de nacimiento') }}
             {{ Form::date('fecha_nac', $usuario->fecha_nac, ['class' => 'form-control' . ($errors->has('fecha_nac') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Nac']) }}
             {!! $errors->first('fecha_nac', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
+
 
         <div class="mb-3">
             <label for="genero" class="form-label">Sexo:</label>
@@ -85,11 +90,15 @@
                 <option value="Mantenimiento petrolero">Mantenimiento petrolero</option>
                 <option value="Mecatrónica">Mecatrónica</option>
             </select>
-        </div>
+        </div>        <br>
 
 
     </div>
     <div class="box-footer mt20">
+        <div class="d-grid gap-2">
         <button type="submit" class="btn btn-secondary">{{ __('Ingresar') }}</button>
+        </div>
     </div>
+
+
 </div>

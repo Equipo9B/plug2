@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\http\Controllers\UserController;
+
 use App\http\Controllers\PerfilController;
 use App\http\Controllers\HobbieController;
 use App\http\Controllers\UsuarioController;
@@ -27,6 +29,8 @@ Route::get('/', function () {
 //Route::get('/usuarios', [PerfilController::class, 'show']);
 
 Route::resource('/hobbies', HobbieController::class);
+
+Route::resource('users', UserController::class)->middleware('admin');
 
 Route::resource('usuarios', UsuarioController::class);
 
