@@ -82,9 +82,11 @@ class AuthManager extends Controller
         $fotos = array();
         $idU = Auth::user()->id;
             $data = User::where('id','=',$idU)->first();
-            $usuarios = User::get();
-            $fotos = Foto::get();
-        return view('inicio',compact('data','fotos','usuarios'));
+            $usuarios = User::paginate();
+            $fotos = Foto::paginate();
+        return view('inicio',compact('data','fotos','usuarios'))
+        ->with('i', (request()->input('page', 1) - 1) * $fotos->perPage())
+        ->with('i', (request()->input('page', 1) - 1) * $usuarios->perPage());
     }
 
     public function chatify3($idUsu){

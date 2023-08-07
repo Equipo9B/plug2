@@ -11,22 +11,18 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Foto</span>
+                            <span class="card-title">{{ __('') }} </span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('fotos.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('usuarioFoto') }}"> {{ __('Regresar') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Foto:</strong>
                             {{ $foto->foto }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Usuario Id:</strong>
-                            {{ $foto->usuario_id }}
                         </div>
 
                     </div>

@@ -83,11 +83,9 @@
                 </div>
             </div>
         </nav>
-        <div class="text-bg-warning p-3">
         <main class="py-4">
             @yield('content')
         </main>
-        </div>
     </div>
 </body>
 </html>

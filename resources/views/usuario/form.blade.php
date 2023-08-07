@@ -90,6 +90,6 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Ingresar') }}</button>
+        <button type="submit" class="btn btn-secondary">{{ __('Ingresar') }}</button>
     </div>
 </div>

@@ -17,7 +17,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('fotos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('fotos.create') }}" class="btn btn-secondary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear Nueva') }}
                                 </a>
                               </div>
@@ -34,36 +34,37 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>Id</th>
+                                        <th>No.</th>
 										<th>Foto</th>
-										<th>Usuario Id</th>
+										<th>Acción</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php
+                                        $contador=0;
                                     @endphp
                                     @foreach ($fotos as $foto)
                                     @php
-                                        $loginId = Session::get('loginId');
+                                        $loginId = Auth::user()->id;
                                         $idFoto = $foto->usuario_id;
                                     @endphp
                                     @if($idFoto==$loginId)
+                                    @php
+                                        $contador=$contador+1;
+                                    @endphp
                                         <tr>
-                                            <td>{{ $foto->id }}</td>
+                                            <td>{{ $contador }}</td>
                                             <td>
-                                                <img src="{{ asset($foto->foto)}}" width="50" height="50" class="img img-responsive">
+                                                <img src="{{ asset($foto->foto)}}" width="250" height="250" class="img img-responsive">
                                             </td>
-											<td>{{ $foto->usuario_id }}</td>
-
                                             <td>
                                                 <form action="{{ route('fotos.destroy',$foto->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('fotos.show',$foto->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('fotos.edit',$foto->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
