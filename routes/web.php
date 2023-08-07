@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\UserController;
-
 use App\http\Controllers\PerfilController;
 use App\http\Controllers\HobbieController;
 use App\http\Controllers\UsuarioController;
@@ -30,7 +29,7 @@ Route::get('/', function () {
 
 Route::resource('/hobbies', HobbieController::class);
 
-Route::resource('users', UserController::class)->middleware('admin');
+Route::resource('users', UserController::class);
 
 Route::resource('usuarios', UsuarioController::class);
 
@@ -43,6 +42,8 @@ Route::resource('mensajes', MensajeController::class);
 //Route::get('usuario','PerfilController@index');
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios')->middleware('admin');
 Route::get('/fotos', [FotoController::class, 'index'])->name('fotos')->middleware('admin');
+Route::get('/users', [UserController::class, 'index'])->name('users')->middleware('admin');
+
 
 //Rutas de funciones
 

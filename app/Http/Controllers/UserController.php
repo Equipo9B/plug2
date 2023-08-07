@@ -24,6 +24,14 @@ class UserController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
     }
 
+    public function usuarioBorrar()
+    {
+        $users = User::paginate();
+
+        return view('user.index', compact('users'))
+            ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -103,7 +111,7 @@ class UserController extends Controller
     {
         $user = User::find($id)->delete();
 
-        return redirect()->route('users.index')
+        return redirect()->route('login')
             ->with('success', 'User deleted successfully');
     }
 }
