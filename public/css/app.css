@@ -1,0 +1,16 @@
+body{
+    background-image: url("../storage/images/FondoAzul2.png");
+    background-repeat: repeat;
+}
+
+.logotipo{
+    background-image: url("../storage/images/logoP.png");
+    height: 50px;
+    width: 50px;
+}
+
+.jijija{
+    font-family: 'Times New Roman', Times, serif;
+    background-image: url("../storage/images/1689888409Alex11.webp");
+    background-size: cover;
+}

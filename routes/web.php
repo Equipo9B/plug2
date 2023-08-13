@@ -25,6 +25,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/prueba', function () {
+    return view('prueba');
+});
+
 //Route::get('/usuarios', [PerfilController::class, 'show']);
 
 Route::resource('/hobbies', HobbieController::class);

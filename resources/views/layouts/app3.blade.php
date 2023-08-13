@@ -23,7 +23,7 @@
             <div class="container">
                 <img src="{{ URL('storage/images/logoP.png') }}" alt="" width="55px" height="55px">
                 <a class="btn btn-secondary" href="{{ route('inicio') }}">
-                    Inicio
+                    Plug
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -84,9 +84,11 @@
                 </div>
             </div>
         </nav>
+        <link rel="stylesheet" href="{{ URL('css/app2.css') }}">
         <main class="py-4">
             @yield('content')
         </main>
+        </div>
     </div>
 </body>
 </html>

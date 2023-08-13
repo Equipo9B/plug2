@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-<div class="text-bg-warning p-3">
 
 @include('Chatify::layouts.headLinks')
     <section class="content container-fluid">
@@ -64,7 +63,7 @@
                                 <form method="POST" action="{{ route('coincidencias.store',$coincidencia->id) }}" role="form" enctype="multipart/form-data">
                                 <a class="btn btn-secondary btn-outline-warning" href="{{ route('inicio') }}"> {{ __('Regresar') }}</a>
                                 @csrf
-                                <button type="submit" class="btn btn-secondary btn-outline-warning">{{ __('Match!') }}</button>
+                                <button type="submit" class="btn btn-secondary btn-outline-warning">{{ __('Conectar') }}</button>
                                 @include('coincidencia.form2')
                                 @endif
 
@@ -72,7 +71,7 @@
                                 <form method="POST" action="{{ route('coincidencias.store') }}" role="form" enctype="multipart/form-data">
                                 <a class="btn btn-secondary btn-outline-warning" href="{{ route('inicio') }}"> {{ __('Regresar') }}</a>
                                 @csrf
-                                <button type="submit" class="btn btn-secondary btn-outline-warning">{{ __('Match!') }}</button>
+                                <button type="submit" class="btn btn-secondary btn-outline-warning">{{ __('Conectar!') }}</button>
                                 @include('coincidencia.form3')
                                 @endif
 
@@ -144,5 +143,4 @@
         </div>
 
     </section>
-</div>
 @endsection

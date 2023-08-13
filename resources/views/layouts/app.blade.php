@@ -21,8 +21,9 @@
         <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
 
             <div class="container">
+                <img src="{{ URL('storage/images/logoP.png') }}" alt="" width="55px" height="55px">
                 <a class="btn btn-secondary" href="{{ route('inicio') }}">
-                    {{ config('app.name', 'Plug') }}
+                    Inicio
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -66,8 +67,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end text-bg-secondary" aria-labelledby="navbarDropdown">
                                     <a class="btn btn-warning dropdown-item text-bg-success" href="{{ route('perfil') }}">{{ __('Perfil') }}</a>
-                                    <a class="btn btn-warning dropdown-item text-bg-danger" href="{{ route('chatify') }}">{{ __('Chats') }}</a>
-                                    <a class="btn btn-warning dropdown-item text-bg-warning" href="{{ route('logout') }}"
+                                    <a class="btn btn-warning dropdown-item text-bg-warning" href="{{ route('chatify') }}">{{ __('Chats') }}</a>
+                                    <a class="btn btn-warning dropdown-item text-bg-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
@@ -83,11 +84,10 @@
                 </div>
             </div>
         </nav>
-        <div class="text-bg-warning p-3">
+        <link rel="stylesheet" href="{{ URL('css/app.css') }}">
         <main class="py-4">
             @yield('content')
         </main>
-        </div>
     </div>
 </body>
 </html>

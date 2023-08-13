@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.app3')
 
 @section('content')
-<div class="text-bg-warning p-3">
 <div class="container ">
     <div class="row justify-content-center ">
         <div class="col-md-4 col-md-offset-4" style="margin-top:20px">
+
                     @foreach ($usuarios as $usuario)
                     @php
                         $idUsu=Auth::user()->id;
@@ -148,8 +148,8 @@
                         @default
                     @endswitch
                     @endforeach
+
         </div>
     </div>
-</div>
 </div>
 @endsection
