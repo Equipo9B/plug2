@@ -1,6 +1,3 @@
-@extends('layouts.app2')
-
-@section('content')
 @include('Chatify::layouts.headLinks')
 @php
     use App\Models\Foto;
@@ -18,7 +15,7 @@ use Illuminate\Support\Facades\Session;
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES</span> </a>
+                <a href="{{ route('inicio') }}"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">REGRESAR</span> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#"><i class="fas fa-cog settings-btn"></i></a>
@@ -125,4 +122,3 @@ use Illuminate\Support\Facades\Session;
 @include('Chatify::layouts.modals')
 @include('Chatify::layouts.footerLinks')
 
-@endsection

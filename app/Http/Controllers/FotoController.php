@@ -27,10 +27,8 @@ class FotoController extends Controller
 
     public function usuarioFoto()
     {
-        $fotos = Foto::paginate();
-
-        return view('foto.usuarioFoto', compact('fotos'))
-            ->with('i', (request()->input('page', 1) - 1) * $fotos->perPage());
+        $fotos = Foto::get();
+        return view('foto.usuarioFoto', compact('fotos'));
     }
 
     /**

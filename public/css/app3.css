@@ -1,7 +1,6 @@
-body.azul{
+body{
     background-image: url("../storage/images/FondoAzul2.png");
-    background-repeat: repeat;
-}
+    background-repeat: repeat;}
 
 .logotipo{
     background-image: url("../storage/images/logoP.png");

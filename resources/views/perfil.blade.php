@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app4')
 
 @section('template_title')
     Perfil

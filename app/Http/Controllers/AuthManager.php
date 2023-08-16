@@ -90,12 +90,11 @@ class AuthManager extends Controller
     }
 
     public function chatify3($idUsu){
-        $idus= Auth::user()->id;
-            $usuarios = User::get();
-            $fotos = Foto::get();
             $id = $idUsu;
-            $messengerColor = Auth::user()->messenger_color;
-            $dark_mode = Auth::user()->dark_mode;
+            $messengerColor = "#FF9800";
+            //Auth::user()->messenger_color;
+            $dark_mode = "1";
+            //Auth::user()->dark_mode;
 
         return view('vendor\Chatify.pages.app',compact('id','messengerColor','dark_mode'));
     }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app4')
 
 @section('template_title')
     Foto
@@ -33,7 +33,6 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No.</th>
 										<th>Foto</th>
 										<th>Acción</th>
 
@@ -41,20 +40,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $contador=0;
-                                    @endphp
                                     @foreach ($fotos as $foto)
                                     @php
                                         $loginId = Auth::user()->id;
                                         $idFoto = $foto->usuario_id;
                                     @endphp
                                     @if($idFoto==$loginId)
-                                    @php
-                                        $contador=$contador+1;
-                                    @endphp
                                         <tr>
-                                            <td>{{ $contador }}</td>
                                             <td>
                                                 <img src="{{ asset($foto->foto)}}" width="250" height="250" class="img img-responsive">
                                             </td>
